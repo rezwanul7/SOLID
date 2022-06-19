@@ -17,8 +17,7 @@ public class Main {
         List<AttributeInfo> essentialAttributeInfoList = attributeCollectionService.getEssentialAttributeInfoList();
 
         //Print Essentials
-        for (AttributeInfo essentialAttributeInfo : essentialAttributeInfoList) {
-            System.out.println(essentialAttributeInfo.getAttributeOption() + " : " + essentialAttributeInfo.getValue());
-        }
+        AttributeInfoPrinter attributeInfoPrinter = new AttributeInfoPrinter(essentialAttributeInfoList);
+        attributeInfoPrinter.execute();
     }
 }
