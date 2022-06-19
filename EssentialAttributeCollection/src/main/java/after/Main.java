@@ -10,7 +10,7 @@ public class Main {
         Product product = ProductFactory.getSampleProduct();
 
         //Essential Attribute Value Collection
-        List<AttributeOption> essentialAttributeOptions = Arrays.asList(AttributeOption.COLOR, AttributeOption.SEASON);
+        List<AttributeOption> essentialAttributeOptions = Arrays.asList(AttributeOption.COLOR, AttributeOption.SEASON, AttributeOption.DESIGNER);
 
         AttributeCollectionService attributeCollectionService = new AttributeCollectionService(product.getAttributeInfoList(), essentialAttributeOptions);
         attributeCollectionService.collect();
