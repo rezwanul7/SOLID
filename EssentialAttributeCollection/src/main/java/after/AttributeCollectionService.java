@@ -1,32 +1,31 @@
 package after;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class AttributeCollectionService {
-    private Product product;
+    private List<AttributeInfo> productAttributeInfoList;
+    private List<AttributeOption> essentialAttributeOptions;
+    private List<AttributeInfo> essentialAttributeInfoList = new ArrayList<>();
     private String color;
     private String season;
 
-    public AttributeCollectionService(Product product) {
-        this.product = product;
+
+    public AttributeCollectionService(List<AttributeInfo> productAttributeInfoList, List<AttributeOption> essentialAttributeOptions) {
+        this.productAttributeInfoList = productAttributeInfoList;
+        this.essentialAttributeOptions = essentialAttributeOptions;
     }
 
     public void collect() {
-        List<AttributeInfo> attributeInfoList = product.getAttributeInfoList();
-        for (AttributeInfo attributeInfo : attributeInfoList) {
-            if (attributeInfo.getAttributeOption() == AttributeOption.COLOR){
-                this.color = attributeInfo.getValue();
-            } else if (attributeInfo.getAttributeOption() == AttributeOption.SEASON){
-                this.season = attributeInfo.getValue();
+        for (AttributeInfo productAttributeInfo : productAttributeInfoList) {
+            if (essentialAttributeOptions.contains(productAttributeInfo.getAttributeOption())){
+                essentialAttributeInfoList.add(productAttributeInfo);
             }
         }
     }
 
-    public String getColor() {
-        return color;
-    }
-
-    public String getSeason() {
-        return season;
+    public List<AttributeInfo> getEssentialAttributeInfoList() {
+        return essentialAttributeInfoList;
     }
 }
